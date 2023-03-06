@@ -21,7 +21,6 @@ class JWTAuthController extends Controller
   
     public function register(Request $request)
     {
-        // return response()->json(['request'=>$request->name]);
          $validator = Validator::make($request->all(),[ 
                       'name' => 'required',
                       'email' => 'required|string|email|unique:users',
@@ -75,23 +74,7 @@ class JWTAuthController extends Controller
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
-        // $this->validate($request, [
-        //     'token' => 'required'
-        // ]);
-  
-        // try {
-        //     JWTAuth::invalidate($request->token);
-  
-        //     return response()->json([
-        //         'success' => true,
-        //         'message' => 'User logged out successfully'
-        //     ]);
-        // } catch (JWTException $exception) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Sorry, the user cannot be logged out'
-        //     ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        // }
+       
     }
   
     public function getUser(Request $request)
